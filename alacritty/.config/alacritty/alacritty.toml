@@ -1,1 +1,4 @@
-import = ["~/.config/alacritty/dracula.toml"] 
+[font.normal]
+family = "MesloLGS NF"
+
+import = ["~/.config/alacritty/tokyo-night.toml"] 
