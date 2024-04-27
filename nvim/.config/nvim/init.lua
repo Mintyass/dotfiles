@@ -11,18 +11,21 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("lazy").setup("plugins")
+
 require("lazy").setup({
-  { 
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
   {
     "folke/which-key.nvim"
   },
-  { "folke/neoconf.nvim", cmd = "Neoconf" },
-  { "folke/neodev.nvim" },
+  {
+    "folke/neoconf.nvim",
+    cmd = "Neoconf"
+  },
+  {
+    "folke/neodev.nvim"
+  },
 })
 
 vim.cmd[[colorscheme tokyonight]]
+
+vim.wo.relativenumber = true
