@@ -1,4 +1,7 @@
 import = ["~/.config/alacritty/tokyonight-night.toml"] 
 
 [font.normal]
-family = "MesloLGS NF"
+family = "MesloLGSNerdFont"
+
+[window]
+opacity = 0.8
