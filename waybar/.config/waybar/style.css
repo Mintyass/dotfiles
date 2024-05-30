@@ -16,7 +16,7 @@ window#waybar.hidden {
 
 #workspaces {
     margin-right: 8px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: none;
     background: #383c4a;
 }
@@ -31,7 +31,7 @@ window#waybar.hidden {
 
 #workspaces button.persistent {
     color: #7c818c;
-    font-size: 12px;
+    font-size: 18px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
@@ -44,14 +44,14 @@ window#waybar.hidden {
     background: #7c818c;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     color: white;
 }
 
 #language {
     padding-left: 16px;
     padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 20px 0px 0px 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -60,7 +60,7 @@ window#waybar.hidden {
 #keyboard-state {
     margin-right: 8px;
     padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 20px 20px 0px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -68,8 +68,8 @@ window#waybar.hidden {
 
 #custom-pacman {
     padding-left: 16px;
-    padding-right: 8px;
-    border-radius: 10px 0px 0px 10px;
+    padding-right: 16px;
+    border-radius: 20px 20px 20px 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -78,7 +78,7 @@ window#waybar.hidden {
 #custom-mail {
     margin-right: 8px;
     padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 20px 20px 0px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -87,7 +87,7 @@ window#waybar.hidden {
 #mode {
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -96,7 +96,7 @@ window#waybar.hidden {
 #clock {
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px 0px 0px 10px;
+    border-radius: 20px 0px 0px 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -104,7 +104,7 @@ window#waybar.hidden {
 
 #custom-weather {
     padding-right: 16px;
-    border-radius: 0px 10px 10px 0px;
+    border-radius: 0px 20px 20px 0px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -114,7 +114,7 @@ window#waybar.hidden {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -129,7 +129,7 @@ window#waybar.hidden {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -139,7 +139,7 @@ window#waybar.hidden {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -153,7 +153,7 @@ window#waybar.hidden {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -163,7 +163,18 @@ window#waybar.hidden {
     margin-right: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 20px;
+    transition: none;
+    color: #ffffff;
+    background: #383c4a;
+}
+
+#window {
+    margin-left: 8px;
+    margin-right: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 20px 20px 20px 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;
@@ -192,7 +203,7 @@ window#waybar.hidden {
 #tray {
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 10px;
+    border-radius: 20px;
     transition: none;
     color: #ffffff;
     background: #383c4a;

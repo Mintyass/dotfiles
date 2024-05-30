@@ -5,7 +5,7 @@
     "margin": "20 20 0 20",
     // "width": 1280, // Waybar width
     // Choose the order of the modules
-    "modules-left": ["hyprland/workspaces", "custom/pacman", "custom/mail", "hyprland/submap"],
+    "modules-left": ["hyprland/workspaces", "custom/pacman", /*"custom/mail",*/ "hyprland/window"],
     "modules-center": ["clock", "custom/weather"],
     "modules-right": ["pulseaudio", "custom/mem", "backlight", "battery", "tray"],
 
@@ -16,6 +16,12 @@
 
     "hyprland/workspaces": {
         "disable-scroll": true,
+        "format": "{icon}",
+        "format-icons": {
+          "1": "󰣇",
+          "2": "󰈹",
+          "3": "",
+        },
         "persistent-workspaces": {
             "1": [],
             "2": [],
@@ -25,9 +31,9 @@
     },
 
     "hyprland/language": {
-        "format": "{} ",
-	"min-length": 5,
-	"tooltip": false
+      "format": "{} ",
+      "min-length": 5,
+      "tooltip": false
     },
 
     "keyboard-state": {
@@ -52,7 +58,7 @@
 
     "custom/mail": {
         "format": "{} 󰊫",
-        "exec": "$HOME/.config/waybar/scripts/checkgmail.py",
+        "exec": "$HOME/.config/waybar/scripts/.venv/bin/python $HOME/.config/waybar/scripts/checkgmail.py",
         "interval": 120,
         "on-click": "firefox https://mail.google.com/mail/u/0/#inbox ; pkill -SIGRTMIN+9 waybar",
         "signal": 9,
@@ -72,8 +78,8 @@
     "custom/weather": {
         "format": "{}",
         "tooltip": true,
-        "interval": 1800,
-        "exec": "$HOME/.config/waybar/scripts/wttr.py",
+        "interval": 900,
+        "exec": "$HOME/.config/waybar/scripts/.venv/bin/python $HOME/.config/waybar/scripts/wttr.py",
         "return-type": "json"
     },
 
@@ -134,10 +140,15 @@
         "format-alt": "{time} {icon}",
         "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂"],
         "on-update": "$HOME/.config/waybar/scripts/check_battery.sh",
-          },
+    },
 
-          "tray": {
-              "icon-size": 16,
-              "spacing": 0
-          },
-      }
+    "hyprland/window": {
+       "format": "{}",
+       "icon": true
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 0
+    },
+}

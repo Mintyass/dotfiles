@@ -58,7 +58,7 @@ WEATHER_CODES = {
 data = {}
 
 
-weather = requests.get("https://wttr.in/Springfield, Manitoba?format=j1").json()
+weather = requests.get("https://wttr.in/Hayward, California?format=j1").json()
 
 
 def format_time(time):
@@ -66,7 +66,7 @@ def format_time(time):
 
 
 def format_temp(temp):
-    return (hour["FeelsLikeC"] + "°").ljust(3)
+    return (hour["FeelsLikeF"] + "°").ljust(3)
 
 
 def format_chances(hour):
@@ -91,16 +91,16 @@ def format_chances(hour):
 data["text"] = (
     WEATHER_CODES[weather["current_condition"][0]["weatherCode"]]
     + " "
-    + weather["current_condition"][0]["FeelsLikeC"]
+    + weather["current_condition"][0]["FeelsLikeF"]
     + "°"
 )
 # data['text'] = weather['current_condition'][0]['FeelsLikeC']+"°"
 
 data["tooltip"] = (
-    f"<b>{weather['current_condition'][0]['weatherDesc'][0]['value']} {weather['current_condition'][0]['temp_C']}°</b>\n"
+    f"<b>{weather['current_condition'][0]['weatherDesc'][0]['value']} {weather['current_condition'][0]['temp_F']}°</b>\n"
 )
-data["tooltip"] += f"Feels like: {weather['current_condition'][0]['FeelsLikeC']}°\n"
-data["tooltip"] += f"Wind: {weather['current_condition'][0]['windspeedKmph']}Km/h\n"
+data["tooltip"] += f"Feels like: {weather['current_condition'][0]['FeelsLikeF']}°\n"
+data["tooltip"] += f"Wind: {weather['current_condition'][0]['windspeedMiles']}M/h\n"
 data["tooltip"] += f"Humidity: {weather['current_condition'][0]['humidity']}%\n"
 for i, day in enumerate(weather["weather"]):
     data["tooltip"] += "\n<b>"
@@ -109,7 +109,7 @@ for i, day in enumerate(weather["weather"]):
     if i == 1:
         data["tooltip"] += "Tomorrow, "
     data["tooltip"] += f"{day['date']}</b>\n"
-    data["tooltip"] += f"⬆️ {day['maxtempC']}° ⬇️ {day['mintempC']}° "
+    data["tooltip"] += f"⬆️ {day['maxtempF']}° ⬇️ {day['mintempF']}° "
     data["tooltip"] += (
         f" {day['astronomy'][0]['sunrise']}  {day['astronomy'][0]['sunset']}\n"
     )
@@ -118,7 +118,7 @@ for i, day in enumerate(weather["weather"]):
             if int(format_time(hour["time"])) < datetime.now().hour - 2:
                 continue
         data["tooltip"] += (
-            f"{format_time(hour['time'])} {WEATHER_CODES[hour['weatherCode']]} {format_temp(hour['FeelsLikeC'])} {hour['weatherDesc'][0]['value']}, {format_chances(hour)}\n"
+            f"{format_time(hour['time'])} {WEATHER_CODES[hour['weatherCode']]} {format_temp(hour['FeelsLikeF'])} {hour['weatherDesc'][0]['value']}, {format_chances(hour)}\n"
         )
 
 
