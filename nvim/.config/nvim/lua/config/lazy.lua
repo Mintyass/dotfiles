@@ -45,3 +45,5 @@ require("lazy").setup({
     },
   },
 })
+
+vim.cmd("highlight WinSeparator guifg=#3b4261")

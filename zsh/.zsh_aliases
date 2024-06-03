@@ -1,3 +1,5 @@
-alias cat=batcat
+alias cat=bat
 alias ls=eza
 alias cd=z
+
+alias pgtcon='pgcli postgresql://readonly:sLEDLhUkDda7@tconstruct-prod-postgres.cvkrpbvcc0jp.us-west-2.rds.amazonaws.com:5432/tconstruct'

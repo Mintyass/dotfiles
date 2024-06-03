@@ -2,3 +2,6 @@ import = ["~/.config/alacritty/tokyonight-night.toml"]
 
 [font.normal]
 family = "MesloLGS NF"
+
+[font]
+size = 14.0
