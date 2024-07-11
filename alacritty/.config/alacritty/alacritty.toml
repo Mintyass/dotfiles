@@ -1,4 +1,8 @@
-import = ["~/.config/alacritty/tokyonight-night.toml"] 
+import = ["~/.config/alacritty/night-owl.toml"] 
 
 [font.normal]
-family = "MesloLGS NF"
+family = "Hack Nerd Font"
+
+[font]
+size = 11
+
