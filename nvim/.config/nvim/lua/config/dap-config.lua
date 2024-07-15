@@ -8,10 +8,15 @@ dap.adapters.codelldb = {
   type = "server",
   port = "${port}",
   executable = {
-    command = "~/.local/share/nvim/mason/bin/codelldb", -- Update this path to where codelldb is installed
+    command = vim.fn.expand("~/.local/share/nvim/mason/bin/codelldb"), -- Ensure the path is expanded correctly
     args = { "--port", "${port}" },
   },
 }
+
+-- Function to get the correct path to the executable
+local function get_program_path(default_path)
+  return vim.fn.input("Path to executable: ", default_path, "file")
+end
 
 -- Setup the DAP configuration for C/C++ using Clang
 dap.configurations.cpp = {
@@ -19,10 +24,10 @@ dap.configurations.cpp = {
     name = "Launch",
     type = "codelldb",
     request = "launch",
+    cwd =  "${workspaceFolder}",
     program = function()
-      return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bazel-bin/NESMint/Main", "file")
+      return get_program_path(vim.fn.getcwd() .. "/bazel-bin/NESMint/Main")
     end,
-    cwd = "${workspaceFolder}",
     stopOnEntry = false,
     setupCommands = {
       {
@@ -32,45 +37,13 @@ dap.configurations.cpp = {
       },
     },
     args = {},
-
     -- Source mapping to resolve breakpoints correctly
     sourceMap = {
       ["/proc/self/cwd"] = vim.fn.getcwd(),
     },
-
     runInTerminal = false,
   },
-  {
-    name = "Launch NESMintApp",
-    type = "codelldb",
-    request = "launch",
-    program = vim.fn.getcwd() .. "/bazel-bin/NESMintApp/NESMintApp",
-    cwd = "${workspaceFolder}",
-    stopOnEntry = false,
-
-    setupCommands = {
-      {
-        text = '-enable-pretty-printing',
-        description = 'enable pretty printing',
-        ignoreFailures = false
-      },
-    },
-    args = {},
-
-    -- Source mapping to resolve breakpoints correctly
-    sourceMap = {
-      ["/proc/self/cwd"] = vim.fn.getcwd(),
-    },
-
-    runInTerminal = false,
-  }
 }
-
--- Key mappings
-vim.api.nvim_set_keymap('n', '<F5>', '<Cmd>lua require"dap".continue()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F10>', '<Cmd>lua require"dap".step_over()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F11>', '<Cmd>lua require"dap".step_into()<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<F12>', '<Cmd>lua require"dap".step_out()<CR>', { noremap = true, silent = true })
 
 -- Apply the same configuration to C files
 dap.configurations.c = dap.configurations.cpp
@@ -88,3 +61,4 @@ end
 dap.listeners.before.event_exited["dapui_config"] = function()
   dapui.close()
 end
+
