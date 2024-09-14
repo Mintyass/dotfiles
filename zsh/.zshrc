@@ -89,6 +89,7 @@ plugins=(git)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export PATH="$PATH:/home/cmintzias/.local/bin:/snap/bin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
