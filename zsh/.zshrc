@@ -144,6 +144,11 @@ export PINTA_RESOURCES_PATH=$PintaResourcesPath
 export ScenariosPath="/home/cmintzias-local/autopilot/pinta/python/scenario_executor/scenario_executor"
 export PYTHONPATH=$PYTHONPATH:/home/cmintzias-local/autopilot/pinta/python/scenario_executor:/home/cmintzias-local/autopilot/pinta/BUILD/python/sim_command_stream:/home/cmintzias-local/autopilot/pinta/BUILD/python/sim_state_stream:/usr/lib/python3.10/tkinter
 
+export UV_EXTRA_INDEX_URL=https://artifactory.teslamotors.com/artifactory/api/pypi/autopilot-release-pypi/simple
+
+export DOCKER_BUILDKIT=1
+export DOCKER_BUILD_ARGS=--ulimit nofile=1024:1024
+
 export CXX=clang++
 export CXXFLAGS=-std=c++20
 
@@ -175,6 +180,13 @@ ap()
     ap_dir=$(get_ap_dir)
     "$ap_dir"/tools/autopilot "$@"
 }
+
+nf()
+{
+  nvim $(fzf)
+}
+
+export PATH="/usr/local/go/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
 
