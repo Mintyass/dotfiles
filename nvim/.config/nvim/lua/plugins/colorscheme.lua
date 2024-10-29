@@ -1,10 +1,5 @@
 return {
   {
-    "folke/tokyonight.nvim",
-    lazy = true,
-    opts = { style = "night" },
-  },
-  {
     "oxfist/night-owl.nvim",
     lazy = false,
     priority = 1000,
@@ -15,5 +10,5 @@ return {
     opts = {
       colorscheme = "night-owl",
     },
-  },
+  }
 }
