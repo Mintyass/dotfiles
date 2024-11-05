@@ -2,6 +2,6 @@ alias cat=batcat
 alias eza=exa
 alias ls=eza
 alias cd=z
-alias vim=nvim
 alias bazel=bazel-6.4.0
 alias python=python3
+alias lat=la -T

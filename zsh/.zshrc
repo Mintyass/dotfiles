@@ -133,54 +133,6 @@ source ~/.zsh_aliases
 
 export EDITOR=nvim.appimage
 
-export PATH="/home/cmintzias-local/.local/bin:$PATH"
-export PATH="/home/cmintzias-local/pinta/scripts:$PATH"
-
-# Firmware token for local TMSERVER
-export FIRMWARE_MAP_OVERRIDES_USER="cmintzias"
-export FIRMWARE_MAP_OVERRIDES_PAT="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"
-
-export PintaResourcesPath="/home/cmintzias-local/autopilot/pinta/resources"
-export PINTA_RESOURCES_PATH=$PintaResourcesPath
-export ScenariosPath="/home/cmintzias-local/autopilot/pinta/python/scenario_executor/scenario_executor"
-export PYTHONPATH=$PYTHONPATH:/home/cmintzias-local/autopilot/pinta/python/scenario_executor:/home/cmintzias-local/autopilot/pinta/BUILD/python/sim_command_stream:/home/cmintzias-local/autopilot/pinta/BUILD/python/sim_state_stream:/usr/lib/python3.10/tkinter
-
-export UV_EXTRA_INDEX_URL=https://artifactory.teslamotors.com/artifactory/api/pypi/autopilot-release-pypi/simple
-
-export DOCKER_BUILDKIT=1
-export DOCKER_BUILD_ARGS=--ulimit nofile=1024:1024
-
-export CXX=clang++
-export CXXFLAGS=-std=c++20
-
-get_ap_dir()
-{
-    if [ -d /usr_src/firmware ]; then
-        echo /usr_src/firmware
-    else
-        gittop=$(git rev-parse --show-toplevel)
-        # If we're in a sub-module (or sub-sub-module), search upwards for
-        # the parent (or grand-parent) git tree root.
-        while true
-        do
-            parent_gittop=$(cd "${gittop:h}" && git rev-parse --show-toplevel 2>/dev/null)
-            if [ ! -z "${parent_gittop:-}" ] ; then
-                gittop="$parent_gittop"
-            else
-                break  # parent folder is not a git tree, so we're done
-            fi
-        done
-        echo "$gittop"
-    fi
-}
-
-
-ap()
-{
-    set -x
-    ap_dir=$(get_ap_dir)
-    "$ap_dir"/tools/autopilot "$@"
-}
 
 nf()
 {
@@ -191,34 +143,18 @@ export PATH="/usr/local/go/bin:$PATH"
 
 export PATH="$HOME/.local/bin:$PATH"
 
-#eval "$(thefuck --alias fuck)"
 eval "$(register-python-argcomplete3 ap 2>/dev/null)"
 
-export REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
-
-export SIM_SCENARIOS_CLIENT_PORT=3000
-export SIM_SCENARIOS_SERVER_PORT=8001
-export SIM_SCENARIOS_GO_SERVER_PORT=8002
-
-export SIM_SCENARIOS_SERVER_URL="http://localhost"
-export SIM_SCENARIOS_GO_SERVER_URL="http://localhost"
-export FLATTEN_SCENARIOS_SERVER_URL="http://localhost:5000"
-
-# Read Only S3 Bucket Creds:
-export SIM_SCENARIOS_S3_ACCESS_KEY_ID=395c80f8-5275-46c1-a49c-3f49f126ebc0
-export SIM_SCENARIOS_S3_SECRET_ACCESS_KEY_ID=LYDEld5dHKNyOhkgPrZI17QYlpkT5KxUyWuS5Swf
-export SIM_SCENARIOS_S3_ENDPOINT=s3.b.smf11.tcs.tesla.com
-
-# This is required and can be procured through Fuze
-export SIM_SCENARIOS_MONGODB_CONNECTION_STRING="mongodb://simscenarios_prod_ro:abf4c4b896e918611321c3cdcd3be1fa20c22685@simscenarios-prod-db.cluster-cvkrpbvcc0jp.us-west-2.docdb.amazonaws.com:27017/simscenarios"
-export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export TCLIPS_ACCESS_TOKEN=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRvcGlsb3RfdGNsaXBzX2FwaTEiLCJleHAiOjE3MjUwNDQwNjIsImlhdCI6MTcyNDQzODY2MiwiaXNzIjoiaHR0cHM6Ly9ib3VuY2VyLnZuLnRlc2xhbW90b3JzLmNvbSIsImp0aSI6IjQ3Y2QxMzc5LTdjMTgtNDAxZC04MDAyLWFhYWU4NzIzNzYzMCIsInNjcCI6WyJ0OmF1dG9waWxvdC1jbGlwcyJdLCJzdWIiOiJjbWludHppYXMiLCJ0ZXNsYS5hdXRobGV2ZWwiOiJQYXNzd29yZCIsInR0bCI6NjA0ODAwfQ.ssVgJ_H4qEctOrc5Z3J_1XJNlg0ixaANbI1Bnsi8p-bAyJcjPMlG80GBTBXHk8I5rU7fdnSxvaEaqUfrYbTKqhm-nkF55_7KoJDUO4XiY-83tF-02eFD9dDGWj4BlpZ1L6srMANaPk9XtRVi3oue1WCYEVsQw-Y4W09JnfJNoJFz_i03siVeieUo88l5l8PIvdkOlES9hzHAEGepDlrIXUIH_ouXSfdHsIyhvZLhK4_e-Yj0sJbFXH3pKcRqgATK4i5s3PJSbzXBg-ALJn41BxHwPgHeSa0LugQUWfPCPRSuyV8kFNOsQGbmtNiI4t0XFdcXsyFoFkf82xFWuvsKKQ
-export TCLIPS_USERNAME=cmintzias
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# Source work-specific settings
+if [ -f ~/.work.zsh ]; then
+  source ~/.work.zsh
+fi
