@@ -5,7 +5,6 @@
 vim.g.autoformat = false
 
 vim.opt.ignorecase = true
-
 -- require("telescope").setup({
 --   pickers = {
 --     live_grep = {
