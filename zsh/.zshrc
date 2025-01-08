@@ -14,6 +14,8 @@ fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export PATH=$PATH:$HOME/.local/bin:/usr/local/go/bin:/snap/bin:/home/linuxbrew/.linuxbrew/bin:$HOME/.cargo/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -84,7 +86,7 @@ zstyle ':omz:update' frequency 13
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting ssh-agent python)
+plugins=(git dotenv zsh-autosuggestions zsh-syntax-highlighting ssh-agent python)
 
 # Python plugin settings
 export PYTHON_AUTO_VRUN=true
@@ -98,7 +100,7 @@ zstyle :omz:plugins:ssh-agent lazy yes
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-export PATH="$PATH:/home/cmintzias/.local/bin:/snap/bin"
+# export PATH="$PATH:/home/cmintzias-local/.local/bin:/snap/bin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -133,15 +135,15 @@ source ~/.zsh_aliases
 
 export EDITOR=nvim.appimage
 
+# export PATH="/usr/local/go/bin:$PATH"
+# export PATH="$HOME/.local/bin:$PATH"
+# export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 
 nf()
 {
   nvim $(fzf)
 }
 
-export PATH="/usr/local/go/bin:$PATH"
-
-export PATH="$HOME/.local/bin:$PATH"
 
 eval "$(register-python-argcomplete3 ap 2>/dev/null)"
 
