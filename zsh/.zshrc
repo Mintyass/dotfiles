@@ -147,6 +147,8 @@ nf()
 
 eval "$(register-python-argcomplete3 ap 2>/dev/null)"
 
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
