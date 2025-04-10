@@ -10,3 +10,5 @@ alias k=kubectl
 alias n=nvim
 alias n.="nvim ."
 alias gswf="git switch feature/das-fsd"
+alias docker-compose="docker compose"
+alias ks=k9s

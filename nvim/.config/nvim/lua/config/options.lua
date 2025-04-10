@@ -5,6 +5,8 @@
 vim.g.autoformat = false
 
 vim.opt.ignorecase = true
+vim.opt.clipboard = "unnamedplus" -- Sync with system clipboard
+vim.filetype.add({extension = {dv = 'cpp'}})
 -- require("telescope").setup({
 --   pickers = {
 --     live_grep = {

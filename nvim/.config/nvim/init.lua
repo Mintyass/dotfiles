@@ -9,3 +9,4 @@ vim.g.dap = {
   justMyCode = false,
 }
 
+vim.opt.clipboard = "unnamedplus"
