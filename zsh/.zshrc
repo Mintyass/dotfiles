@@ -134,6 +134,7 @@ source ~/.zsh_aliases
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export EDITOR=nvim.appimage
+export SUDO_EDITOR=/snap/bin/nvim
 
 # export PATH="/usr/local/go/bin:$PATH"
 # export PATH="$HOME/.local/bin:$PATH"
@@ -162,3 +163,6 @@ export NVM_DIR="$HOME/.config/nvm"
 if [ -f ~/.work.zsh ]; then
   source ~/.work.zsh
 fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /home/linuxbrew/.linuxbrew/Cellar/minio-mc/2025-07-21T05-28-08Z/bin/mc mc

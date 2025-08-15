@@ -1,4 +1,4 @@
-alias cat=batcat
+alias cat="batcat -p"
 alias eza=exa
 alias ls=eza
 alias cd=z
